@@ -1,0 +1,5 @@
+#ignore database contents
+data/*
+#we want to keep the directory, but git doesn't allow for keeping empty directories
+#https://stackoverflow.com/questions/4250063/how-to-gitignore-all-files-folder-in-a-folder-but-not-the-folder-itself
+!data/.gitkeep

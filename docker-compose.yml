@@ -1,0 +1,27 @@
+version: "3.5"
+
+services:
+    web:
+        image: nginx:latest
+        ports:
+            - "8080:80"
+        volumes:
+            - ./code:/code
+            - ./code/site.conf:/etc/nginx/conf.d/site.conf
+        links:
+            - php
+            - db
+    php:
+        image: php:5-fpm
+        volumes:
+            - ./code:/code
+
+    db:
+        image: mysql
+        restart: always
+        environment:
+            MYSQL_DATABASE: mouse-tracker
+            MYSQL_ROOT_PASSWORD: root
+        volumes:
+            - ./data:/var/lib/mysql
+            - ./code/db-init.sql:/docker-entrypoint-initdb.d/db-init.sql
