@@ -5,27 +5,27 @@
 
   $router = new Router();
 
-  $router->route("item/:id", 'GET', function ($params) {
-    echo "get item<br>";
-    echo "params<br>";
-    print_r($params);
+  $router->route("history/:uid", 'POST', function ($params) {
+    $db = mysqli_connect("db", "root", "root", "mouse-tracker");
+    $sql = "INSERT INTO MouseHistory (uid,x,y,t) VALUES ";
+    for ($i = 0; $i <= count($_POST["mouseHistory"])-1; $i++) {
+      $point = $_POST["mouseHistory"][$i];
+      if ($i >= 1) {
+        $sql = $sql.", ";
+      }
+      $sql = $sql . "(".$params["uid"].", ".$point["x"].", ".$point["y"].", ".$point["t"].")";
+    }
+    $res = $db->query($sql);
+
+    $db->query(""
+      ."\nUPDATE KeyValue"
+      ."\nSET v='".$params["uid"]."'"
+      ."\nWHERE k='RecentUser'"
+    );
   });
 
-  $router->route("item", 'POST', function ($params) {
-    echo "post item<br>";
-    echo "params<br>";
-    print_r($params);
-  });
-
-  $router->route("item/:id", 'PUT', function ($params) {
-    echo "put item<br>";
-    echo "params<br>";
-    print_r($params);
-  });
-
-  $router->route("item/:id", 'DELETE', function ($params) {
-    echo "delete item<br>";
-    echo "params<br>";
+  $router->route("honk", 'GET', function ($params) {
+    echo "get honk<br>";
     print_r($params);
   });
 

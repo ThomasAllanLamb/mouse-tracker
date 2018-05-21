@@ -8,3 +8,6 @@ in hosts:
 ```
 
 visit [http://mouse-tracker.local:8080]
+
+# TODO
+- Secure mysql

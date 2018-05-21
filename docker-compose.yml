@@ -12,7 +12,7 @@ services:
             - php
             - db
     php:
-        image: php:5-fpm
+        build: ./images/php
         volumes:
             - ./code:/code
 
