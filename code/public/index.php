@@ -92,15 +92,12 @@
           
           function animateToNext () {
             currentTime = (new Date()).getTime();
-
-            console.log(mouseHistory.length);
             
             //just in case we got ahead of the history, discard points until the next timestamp is in the future
             while (mouseHistory.length >= 1 && parseInt(mouseHistory[0].t, 10) < currentTime-t0) {
               mouseHistory.shift();
             }
 
-            console.log(mouseHistory.length);
             if (mouseHistory.length === 0) {
               ghost.css({
                 background: "maroon"
@@ -111,7 +108,6 @@
             else {
               let target = mouseHistory[0];
               mouseHistory.shift();
-              console.log("animate to", target);
               ghost.animate(
                 {
                   left: target.x+"px",
