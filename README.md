@@ -2,13 +2,14 @@
 
 In `code/site.conf`, set `server_name` to the domain you want to use. Suppose `mouse-tracker.local`.
 
-In docker-compose.yml, set the first number of the `web` container's `port`. Suppose `8080:80` to have it show up at mouse-tracker.local:8080.
+In `docker-compose.yml`, set the first number of the `web` container's `port`. Suppose `8080:80` to have it show up at mouse-tracker.local:8080.
 
-in hosts:
+In `/etc/hosts`:
 ```
 127.0.0.1 mouse-tracker.local
 ```
 
+In a terminal
 ```bash
 docker-compose up
 ```
