@@ -4,7 +4,7 @@ services:
     web:
         image: nginx:latest
         ports:
-            - "8080:80"
+            - "3008:80"
         volumes:
             - ./code:/code
             - ./code/site.conf:/etc/nginx/conf.d/site.conf
@@ -17,7 +17,7 @@ services:
             - ./code:/code
 
     db:
-        image: mysql
+        image: mysql:5.6
         restart: always
         environment:
             MYSQL_DATABASE: mouse-tracker
